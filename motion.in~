@@ -1,0 +1,16 @@
+%{
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+%}
+
+digit	[1-9]
+motion	[lrudnLRUDN]
+move	({motion}|{motion}+{digit})
+
+%%			
+{move} { yylval.ideptr=(char *)strdub(yytext);
+	 return move;
+     }
+%%
+
